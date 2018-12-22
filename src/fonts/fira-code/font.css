@@ -1,0 +1,12 @@
+@font-face {
+  font-family: 'FiraCode-Retina';
+  src: url('FiraCode-Retina.eot');
+  src: url('FiraCode-Retina.woff2') format('woff2'),
+       url('FiraCode-Retina.woff') format('woff'),
+       url('FiraCode-Retina.ttf') format('truetype'),
+       url('FiraCode-Retina.svg#FiraCode-Retina') format('svg'),
+       url('FiraCode-Retina.eot?#iefix') format('embedded-opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+

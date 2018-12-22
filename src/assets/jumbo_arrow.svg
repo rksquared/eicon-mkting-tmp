@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="21px" height="316px" viewBox="0 0 21 316" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 52.4 (67378) - http://www.bohemiancoding.com/sketch -->
+    <title>Group 2</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <linearGradient x1="87.8467268%" y1="50%" x2="24.4325504%" y2="50%" id="linearGradient-1">
+            <stop stop-color="#1890FF" offset="0%"></stop>
+            <stop stop-color="#06A9F4" offset="100%"></stop>
+        </linearGradient>
+        <linearGradient x1="50%" y1="0%" x2="50%" y2="100%" id="linearGradient-2">
+            <stop stop-color="#FFFFFF" offset="0%"></stop>
+            <stop stop-color="#FFFFFF" offset="84.2417811%"></stop>
+            <stop stop-color="#24B3F5" offset="100%"></stop>
+        </linearGradient>
+    </defs>
+    <g id="Letter-Sized-Vertical-Document" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Site" transform="translate(-797.000000, -367.000000)">
+            <g id="Jumbotron" transform="translate(-4.000000, 0.000000)">
+                <g id="JumboLogo" transform="translate(731.000000, 367.000000)">
+                    <g id="Group-2">
+                        <path d="M95.688,300.213491 L86.856,310.426982 L84.616,308.483124 L88.808,303.738793 C89.7466714,302.728421 90.5253302,302.0036 91.144,301.564308 L65,301.564308 L65,298.862675 L91.176,298.862675 C90.7066643,298.55517 90.3226682,298.258652 90.024,297.973112 C89.7253318,297.687573 89.3200026,297.259269 88.808,296.688189 L84.616,291.943858 L86.856,290 L95.688,300.213491 Z" id="-&gt;" fill="url(#linearGradient-1)" transform="translate(80.344000, 300.213491) rotate(90.000000) translate(-80.344000, -300.213491) "></path>
+                        <path d="M80.33,48.0001757 C80.33,48.0001757 80.33,48.0001757 80.33,48.0001757 L80.33,0.578152651 L80.33,48.0001631 Z M80.33,208.999837 L80.33,285.587409 L80.33,208.999837 C80.33,208.999824 80.33,208.999824 80.33,208.999824 Z" id="Combined-Shape" stroke="url(#linearGradient-2)" stroke-width="2.72" stroke-linecap="square" fill-rule="nonzero"></path>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
