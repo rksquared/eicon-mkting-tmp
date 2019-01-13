@@ -203,7 +203,7 @@ export default class MainHeader extends React.Component<{ location: any }> {
                   </Col>
                   <Col
                     xs={{
-                      offset: 20
+                      offset: 18
                     }}
                     sm={{
                       offset: 20,
@@ -226,7 +226,7 @@ export default class MainHeader extends React.Component<{ location: any }> {
                     >
                     {(matches: any) => 
                       matches ?
-                        <Button type="primary" ghost={true} icon="menu" style={brandButtonStyle} onClick={() => this.toggleModal()}>Menu</Button> :
+                        <Button type="primary" ghost={true} icon={this.state.modal ? 'close' : 'menu'} style={brandButtonStyle} onClick={() => this.toggleModal()}>{this.state.modal ? 'Close' : 'Menu'}</Button> :
                         <HeaderMenu location={location} mode={matches}/>
                     }
                     </Media>
@@ -234,11 +234,11 @@ export default class MainHeader extends React.Component<{ location: any }> {
                 </Row>
               </Header>
               <Modal
+                closable={false}
                 visible={this.state.modal}
-                onCancel={() => this.toggleModal()}
                 style={{
                   left: 0,
-                  top: 0,
+                  top: 64,
                   minHeight: '100vh',
                   minWidth: '100vw',
                   margin: 0,
@@ -257,7 +257,6 @@ export default class MainHeader extends React.Component<{ location: any }> {
                 }}
                 footer={null}
                 keyboard={true}
-                cancelButtonProps={{shape:'circle', type:'primary', icon:'close'}}
               >
                 <div
                   style={{
@@ -280,25 +279,6 @@ export default class MainHeader extends React.Component<{ location: any }> {
                     md={{ span: 16 }}
                     lg={{ span: 10 }}
                   >
-                    <Row>
-                      <Link
-                        to="/"
-                        style={{
-                          color: 'white',
-                          fontWeight: 400,
-                          fontFamily: 'Gill Sans, Lato',
-                          letterSpacing: '2px',
-                          fontSize: 44,
-                          lineHeight: '62px',
-                          textDecoration: 'none',
-                          width: 260,
-                          float: 'left',
-                        }}
-                      >
-                        <img src={Logo as unknown as string} style={{ height: '48px', paddingRight: '16px', marginBottom: '12px' }} />
-                        <span style={{ color: '#06A9F4' }}>{data.site.siteMetadata.title[0]}</span>{data.site.siteMetadata.title.slice(1)}
-                      </Link>
-                    </Row>
                     <Row>
                       <HeaderMenu location={location} mode={true}/>
                     </Row>
