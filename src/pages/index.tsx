@@ -1,7 +1,9 @@
 import React from 'react'
 import { Row, Button, Col, Icon, Input } from 'antd'
+import Media from 'react-media'
 import * as BG from '../assets/bg3.jpg'
 import SplashTemplate from '../components/indexLayout'
+import MobileLayout from '../components/mobile/mobileIndex'
 import BizLeaders from '../assets/splash-content/biz-leaders'
 import Clinicians from '../assets/splash-content/clinicians'
 import Ops from '../assets/splash-content/ops'
@@ -74,25 +76,34 @@ const landingSplash = {
 export default ({ location }: any) => {
 
   return (
-    <SplashTemplate location={location} splash={landingSplash}>
-      {/* <Row>
-        <Solutions location={location} id="solutions"/>
-      </Row>
-      <Row style={{
-        height: '68px', 
-        color: 'white', 
-        textAlign: 'center',
-        fontFamily: 'DINPro-Regular',
-        paddingLeft: '6vw'
-      }}>
+    <Media
+      query="(max-width: 576px)"
+    >
+      {(matches: any) =>
+        matches ?
+          <MobileLayout loc={location} /> :
+          <SplashTemplate location={location} splash={landingSplash}>
+            {(console.log({matches}), 'hi')}
+            {/* <Row>
+              <Solutions location={location} id="solutions"/>
+            </Row>
+            <Row style={{
+              height: '68px', 
+              color: 'white', 
+              textAlign: 'center',
+              fontFamily: 'DINPro-Regular',
+              paddingLeft: '6vw'
+            }}>
 
-        <Button type="primary" size="large" href="/demo/" style={brandButtonStyle}>
-          <BrandDoubleArrow color="#F8E71C" /> Request Demo <BrandInvDoubleArrow color="#F8E71C" />
-        </Button>
+              <Button type="primary" size="large" href="/demo/" style={brandButtonStyle}>
+                <BrandDoubleArrow color="#F8E71C" /> Request Demo <BrandInvDoubleArrow color="#F8E71C" />
+              </Button>
 
-      </Row>
-      <Row>
-        <ImagingStack />
-      </Row> */}
-    </SplashTemplate>
+            </Row>
+            <Row>
+              <ImagingStack />
+            </Row> */}
+          </SplashTemplate>
+      }
+    </Media>
 )}
