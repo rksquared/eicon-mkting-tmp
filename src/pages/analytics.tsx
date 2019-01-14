@@ -292,7 +292,13 @@ const Solutions = ({ location, id }: any) => {
   console.log('location is. in analytics.tsx: ', location)
 
   return (
-  <LayoutTmplt location={location} customMenu={solutionsSubMenu} siderMenu={siderMenu} bgColor="#E6F7FF" id={id}>
+  <LayoutTmplt 
+    location={location} 
+    // customMenu={solutionsSubMenu} 
+    // siderMenu={siderMenu} 
+    bgColor="#E6F7FF" 
+    id={id}
+  >
     <Content className="soln-grid-container">
       {/* <Row>
         <BrandCarousel />

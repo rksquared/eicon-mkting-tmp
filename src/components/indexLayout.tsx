@@ -8,7 +8,7 @@ import Header from './header'
 import { BrandSplashContainer, brandDarkBlue } from '../assets/brandAssets'
 const { Footer } = Layout;
 
-export default ({ children, location, splash }: any) => {
+export default ({ children, location, splash, mobile }: any) => {
 
   console.log({ splash });
 
@@ -17,6 +17,7 @@ export default ({ children, location, splash }: any) => {
       <Header location={location} />
       <BrandSplashContainer content={splash.content} bg={splash.background}/>
       <Layout style={{
+        top: 'calc(100vh + 64px)',
         width: '100vw',
         backgroundColor: brandDarkBlue,
       }}>
@@ -24,8 +25,9 @@ export default ({ children, location, splash }: any) => {
       </Layout>
       <Footer
         style={{
-          // position: 'fixed',
-          // top: '100vh',
+          position: 'absolute',
+          top: mobile ? '600vh' : 'calc(300vh - 124px)',
+          // bottom: 0,
           height: '62px',
           backgroundColor: 'rgb(0, 21, 40)',
           color: 'white',

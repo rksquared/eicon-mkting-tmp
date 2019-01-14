@@ -17,11 +17,12 @@ export const ligatureStyle = {
 
 export const brandSplashStyle = {
   width: '100vw',
-  height: 'calc(100vh - 64px)',
+  height: '100vh',
   position: 'relative' as PositionProperty,
   display: 'flex',
   justifyContent: 'center',
   alignItems: 'center',
+  paddingTop: '64px',
   margin: '0 auto',
   minHeight: '300px',
 }
@@ -44,7 +45,7 @@ export const BrandInvSingleArrow = ({color}: any) => <span style={{...ligatureSt
 export const BrandSplashContainer = ({ content, bg }: any) => {
   
   const figStyle = {
-    height: '100%',
+    height: 'calc(100% - 64px)',
     width: '100%',
     backgroundImage: bg, 
     backgroundColor: brandDarkBlue,

@@ -7,11 +7,15 @@ import MobileLayout from '../components/mobile/mobileIndex'
 import BizLeaders from '../assets/splash-content/biz-leaders'
 import Clinicians from '../assets/splash-content/clinicians'
 import Ops from '../assets/splash-content/ops'
-import { brandBrightBlueAccent, BrandDoubleArrow, BrandInvDoubleArrow } from '../assets/brandAssets'
-// import ImagingStack from '../components/imagingStack'
-// import Solutions from './analytics'
+import { brandBrightBlueAccent, brandButtonStyle, BrandDoubleArrow, BrandInvDoubleArrow } from '../assets/brandAssets'
+import ImagingStack from '../components/imagingStack'
+import Solutions from './analytics'
 import '../assets/assets.css'
 import './index.css'
+
+if (typeof window !== `undefined`) {
+  const module = require("intersection-observer")
+}
 
 const splashContent = (
   <div
@@ -82,9 +86,9 @@ export default ({ location }: any) => {
       {(matches: any) =>
         matches ?
           <MobileLayout loc={location} /> :
-          <SplashTemplate location={location} splash={landingSplash}>
+          <SplashTemplate location={location} splash={landingSplash} mobile={matches}>
             {(console.log({matches}), 'hi')}
-            {/* <Row>
+            <Row>
               <Solutions location={location} id="solutions"/>
             </Row>
             <Row style={{
@@ -102,7 +106,7 @@ export default ({ location }: any) => {
             </Row>
             <Row>
               <ImagingStack />
-            </Row> */}
+            </Row>
           </SplashTemplate>
       }
     </Media>

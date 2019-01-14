@@ -6275,6 +6275,11 @@ internal-ip@^3.0.1:
     default-gateway "^2.6.0"
     ipaddr.js "^1.5.2"
 
+intersection-observer@^0.5.1:
+  version "0.5.1"
+  resolved "https://registry.yarnpkg.com/intersection-observer/-/intersection-observer-0.5.1.tgz#e340fc56ce74290fe2b2394d1ce88c4353ac6dfa"
+  integrity sha512-Zd7Plneq82kiXFixs7bX62YnuZ0BMRci9br7io88LwDyF3V43cQMI+G5IiTlTNTt+LsDUppl19J/M2Fp9UkH6g==
+
 into-stream@^3.1.0:
   version "3.1.0"
   resolved "https://registry.yarnpkg.com/into-stream/-/into-stream-3.1.0.tgz#96fb0a936c12babd6ff1752a17d05616abd094c6"
@@ -9857,7 +9862,7 @@ react-hot-loader@^4.6.2:
     shallowequal "^1.0.2"
     source-map "^0.7.3"
 
-react-intersection-observer@^6.4.1:
+react-intersection-observer@^6.4.0:
   version "6.4.1"
   resolved "https://registry.yarnpkg.com/react-intersection-observer/-/react-intersection-observer-6.4.1.tgz#28bf727cea1c3c8dfaf1ef69ec4651bd5a4291c9"
   integrity sha512-uJ/NaxDXKikrvV0Py8oJSxO9yjhSXwRg9SRgxrEHFWIZWWBvOduQ/a89J8JpMR8og7hn76CqeopSC2WKaRYxlQ==
@@ -9899,6 +9904,14 @@ react-particles-js@^2.4.2:
   version "2.4.2"
   resolved "https://registry.yarnpkg.com/react-particles-js/-/react-particles-js-2.4.2.tgz#34a4d1ea15eaebcbb068f7b6a7c43b18792fcf65"
   integrity sha512-/rfpLRYUA4JFEBBM8cN3X+kEr9P7J2lXktJi81ugcK6B9H69xNlDFKXOUYe+YizW8E5NapxNgubAcKYt0Co7TQ==
+
+react-scroll-percentage@^3.1.0:
+  version "3.1.0"
+  resolved "https://registry.yarnpkg.com/react-scroll-percentage/-/react-scroll-percentage-3.1.0.tgz#ed58adee77f522d20266851a52415eb7df08fd90"
+  integrity sha512-8Ugbise7GWtjd1DiLaa3LuLnazewMacOKnKfq8ZYLXIZ0vS2HPK4yp7CeRHQeEoqw2YY6RGl+HBWeM0PAGjiGQ==
+  dependencies:
+    invariant "^2.2.4"
+    react-intersection-observer "^6.4.0"
 
 react-scrollchor@^6.0.0:
   version "6.0.0"
