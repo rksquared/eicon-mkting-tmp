@@ -18,7 +18,7 @@ export default ({ id, children, location, customMenu, header, bgColor, siderMenu
       style={{
         margin: '0 auto',
         padding: '8px 1.0875rem 1.45rem',
-        height: 'calc(100vh - 186px)',
+        minHeight: 'calc(100vh - 186px)',
         width: '100vw',
         paddingTop: 24,
         borderTop: '2px solid white',

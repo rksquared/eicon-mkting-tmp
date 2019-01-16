@@ -16,14 +16,14 @@ const HeaderMenu = ({location, mode}: any) => (
   <Menu
   theme="dark"
   mode={mode ? "inline" : "horizontal"}
-  style={{ lineHeight: '62px', fontSize: mode ? '18px' : '24px', fontWeight: mode ? 100 : 300, letterSpacing: '.6px', height: '62px', borderBottom: '0px solid white' }}
+  style={{ fontFamily: 'DINPro-Regular', lineHeight: '62px', fontSize: mode ? '18px' : '24px', fontWeight: mode ? 100 : 300, letterSpacing: '.6px', height: '62px', borderBottom: '0px solid white' }}
   selectedKeys={[location ? location.pathname : '']}
 >
   <SubMenu
     key="/solutions/#analytics"
     title={
       <Link to="/solutions/#analytics" className="ant-menu-item header-menu-item">
-        Solutions
+        Insights
       </Link>}
       
   >
@@ -85,7 +85,7 @@ const HeaderMenu = ({location, mode}: any) => (
   </SubMenu>
   <Item
     key="/platform/"
-    style={{top: mode ? undefined : '-14px'}}
+    // style={{top: mode ? undefined : '-14px'}}
   >
     <Link
       to="/platform/"
@@ -113,7 +113,7 @@ const HeaderMenu = ({location, mode}: any) => (
       Contact
     </Link>
   </Item> */}
-  <Item style={{ height: mode ? '64px' : undefined, top: mode ? undefined : '-24px', }}>
+  <Item style={{ height: mode ? '64px' : undefined, top: mode ? undefined : '-10px', }}>
     <Button className="btn-tst" type="primary" ghost={true} size="large" href="/demo/" style={brandButtonStyle}>
       <BrandDoubleArrow color="#F8E71C" /> Request Demo <BrandInvDoubleArrow color="#F8E71C" />
     </Button>

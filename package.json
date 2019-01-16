@@ -21,8 +21,7 @@
     "react-particles-js": "^2.4.2",
     "react-scroll-percentage": "^3.1.0",
     "react-scrollchor": "^6.0.0",
-    "typeface-lato": "^0.0.54",
-    "typography-theme-lawton": "^0.15.10"
+    "typeface-lato": "^0.0.54"
   },
   "keywords": [
     "gatsby"
@@ -39,14 +38,10 @@
     "@types/react": "^16.7.7",
     "@types/react-dom": "^16.0.10",
     "@types/react-helmet": "^5.0.7",
-    "@types/typography": "^0.16.0",
     "antd": "^3.10.9",
     "gatsby-plugin-antd": "^2.0.2",
     "gatsby-plugin-typescript": "^2.0.1",
-    "gatsby-plugin-typography": "^2.2.1",
-    "prettier": "^1.14.2",
-    "react-typography": "^0.16.13",
-    "typography": "^0.16.17"
+    "prettier": "^1.14.2"
   },
   "repository": {
     "type": "git",

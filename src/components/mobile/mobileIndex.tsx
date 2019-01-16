@@ -123,7 +123,7 @@ export default class test extends React.Component <any> {
             <div className="m-cta-grid-i1">
               <div className="splash-opt-container" id="ops">
                 <Button type="primary" shape="circle" ghost={true} size="large" className="splash-options">
-                  <Icon component={({ height }) => <Ops height={height} />} />
+                  <Icon component={({ height }) => <Ops height={height} />} style={{fontSize: '10vw'}}/>
                 </Button>
                 <div className="splash-opt-text">
                   Data Operations + <br />Management
@@ -131,7 +131,7 @@ export default class test extends React.Component <any> {
               </div>
               <div className="splash-opt-container" id="sci">
                 <Button type="primary" shape="circle" ghost={true} size="large" className="splash-options">
-                  <Icon component={({ height }) => <Clinicians height={height} />} />
+                  <Icon component={({ height }) => <Clinicians height={height} />} style={{fontSize: '10vw'}}/>
                 </Button>
                 <div className="splash-opt-text">
                   Clinicians + <br />Scientists
@@ -139,7 +139,7 @@ export default class test extends React.Component <any> {
               </div>
               <div className="splash-opt-container" id="biz">
                 <Button className="splash-options" type="primary" shape="circle" ghost={true} size="large" >
-                  <Icon component={({ height, width }) => <BizLeaders height={height} width={width} />} />
+                  <Icon component={({ height, width }) => <BizLeaders height={height} width={width} />} style={{fontSize: '10vw'}}/>
                 </Button>
                 <div className="splash-opt-text">
                   Business <br />Leadership

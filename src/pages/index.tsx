@@ -38,7 +38,7 @@ const splashContent = (
           <Icon component={({ height }) => <Ops height={height} />} />
         </Button>
         <div className="splash-opt-text">
-          Data Operations + <br />Management
+          Data Operations<br />+ Management
         </div>
       </div>
       <div className="splash-opt-container" id="sci">
@@ -46,7 +46,7 @@ const splashContent = (
           <Icon component={({ height }) => <Clinicians height={height} />} />
         </Button>
         <div className="splash-opt-text">
-          Clinicians + <br />Scientists
+          Clinicians<br />+ Scientists
         </div>
       </div>
       <div className="splash-opt-container" id="biz">
@@ -82,12 +82,12 @@ export default ({ location }: any) => {
   return (
     <Media
       query="(max-width: 576px)"
+      defaultMatches={false}
     >
       {(matches: any) =>
         matches ?
           <MobileLayout loc={location} /> :
           <SplashTemplate location={location} splash={landingSplash} mobile={matches}>
-            {(console.log({matches}), 'hi')}
             <Row>
               <Solutions location={location} id="solutions"/>
             </Row>
@@ -96,9 +96,8 @@ export default ({ location }: any) => {
               color: 'white', 
               textAlign: 'center',
               fontFamily: 'DINPro-Regular',
-              paddingLeft: '6vw'
+              // paddingLeft: '6vw'
             }}>
-
               <Button type="primary" size="large" href="/demo/" style={brandButtonStyle}>
                 <BrandDoubleArrow color="#F8E71C" /> Request Demo <BrandInvDoubleArrow color="#F8E71C" />
               </Button>

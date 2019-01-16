@@ -15,7 +15,6 @@ module.exports = {
     },
     'gatsby-transformer-sharp',
     'gatsby-plugin-sharp',
-    'gatsby-plugin-typography',
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
@@ -27,13 +26,6 @@ module.exports = {
         display: 'minimal-ui',
         icon: 'src/images/eicon_favicon.png', // This path is relative to the root of the site.
       },
-    },
-    {
-      resolve: 'gatsby-plugin-typography',
-      options: {
-        pathToConfigModule: 'src/utils/typography',
-        omitGoogleFont: true,
-      }
     },
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.app/offline
