@@ -154,56 +154,57 @@ const Solutions = ({ location, id }: any) => {
   console.log('location is. in analytics.tsx: ', location)
 
   return (
-  <LayoutTmplt 
-    location={location} 
-    bgColor="#E6F7FF" 
-    id={id}
-  >
-    <Content className="soln-grid-container">
-      <div className="soln-title-row">
-        <h1 className="soln-title">Uncover Actionable Insights</h1>
-      </div>
-      <div className="soln-card-title-row">
-        <div id="ct1" className="soln-card-title">
-          <h2>Assess</h2>
+    <LayoutTmplt
+      location={location}
+      bgColor="#E6F7FF"
+      id={id}
+    >
+      <Content className="soln-grid-container">
+        <div className="soln-title-row" id="insights">
+            <h1 className="soln-title">Uncover Actionable Insights</h1>
         </div>
-        <div id="ct2" className="soln-card-title">
-          <h2>Insights</h2>
+        <div className="soln-card-title-row">
+          <div id="ct1" className="soln-card-title">
+            <h2>Assess</h2>
+          </div>
+          <div id="ct2" className="soln-card-title">
+            <h2>Insights</h2>
+          </div>
         </div>
-      </div>
-      <div className="soln-card-row">
-        <div className="soln-card" id="c1">
-          <ul className="soln-ul">
-            {generateCardBullets(
-              [
-                ['bar-chart', 'Weekly Activity'],
-                ['dashboard', 'CRO Performance'],
-                ['rise', 'Site Performance'],
-                ['radar-chart', 'Study Health'],
-                ['sliders', 'Cross-Study Evaluation'],
-              ])
-            }
-          </ul>
+        <div className="soln-card-row">
+          <div className="soln-card" id="c1">
+            <ul className="soln-ul">
+              {generateCardBullets(
+                [
+                  ['bar-chart', 'Weekly Activity'],
+                  ['dashboard', 'CRO Performance'],
+                  ['rise', 'Site Performance'],
+                  ['radar-chart', 'Study Health'],
+                  ['sliders', 'Cross-Study Evaluation'],
+                ])
+              }
+            </ul>
+          </div>
+          <div className="soln-card" id="c2">
+            <ul className="soln-ul">
+              {generateCardBullets(
+                [
+                  ['hourglass', 'Real-Time Optimization'],
+                  ['warning', 'Ecosystem Bottlenecks'],
+                  ['fall', 'Potential Painpoints'],
+                  ['compass', 'Decision Support'],
+                  ['global', 'Strategic Support'],
+                ])
+              }
+            </ul>
+          </div>
         </div>
-        <div className="soln-card" id="c2">
-          <ul className="soln-ul">
-            {generateCardBullets(
-              [
-                ['hourglass', 'Real-Time Optimization'],
-                ['warning', 'Ecosystem Bottlenecks'],
-                ['fall', 'Potential Painpoints'],
-                ['compass', 'Decision Support'],
-                ['global', 'Strategic Support'],
-              ])
-            }
-          </ul>
+        <div className="soln-fig-container" >
+          <SolutionFunnel />
         </div>
-      </div>
-      <div className="soln-fig-container">
-        <SolutionFunnel />
-      </div>
-    </Content>
-  </LayoutTmplt>
-)}
+      </Content>
+    </LayoutTmplt>
+  )
+}
 
 export default Solutions

@@ -128,9 +128,9 @@
 
 .m-cta-grid-i1 {
   display: grid;
-  /* grid-template-columns: 9% 26% 4% 25% 4% 26% 7%; */
+  grid-template-columns: repeat(3, calc(100% / 3));
   grid-row: 2 / 5;
-  width: inherit;
+  width: 100%;
 }
 
 .m-cta-grid-btn-container {

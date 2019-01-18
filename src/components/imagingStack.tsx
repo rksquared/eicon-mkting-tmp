@@ -40,7 +40,7 @@ export default class ImagingStack extends React.Component <{}, ImagingStackState
     }
 
     return (
-      <Layout.Content className="imaging-stack-grid-container">
+      <Layout.Content className="imaging-stack-grid-container" id="platform">
         <div className="title">
           <h1><strong><span className="ehighlight">E</span>ICON</strong> CLINICAL IMAGING STACK</h1>
         </div>
@@ -56,10 +56,12 @@ export default class ImagingStack extends React.Component <{}, ImagingStackState
           <div className="title">
             <div className="icon"><Icon type="search" /></div> <span className="ehighlight">e</span>xplorer
               </div>
-          <div className="content">
+          <div className="subtitle">
             <h3>simple. powerful. insights.</h3>
+          </div>
+          <div className="content">
             <ul>
-              <li style={{ paddingTop: '20px' }}>
+              <li style={{ paddingTop: '20px' }} >
                 Streamlined Data Exploration + Accelerated Data Discovery {stackItemActive(0) === 'stack-item' && <BrandSingleArrow color="black" />}
                 <br />
                 <span className="em">1. Overview {stackItemActive(0) === 'stack-item' && <BrandDoubleArrow color="#1890FF" />} 2. Analysis {stackItemActive(0) === 'stack-item' && <BrandDoubleArrow color="#1890FF" />} 3. Actionable Insights</span>
@@ -83,8 +85,10 @@ export default class ImagingStack extends React.Component <{}, ImagingStackState
           <div className="title">
             <div className="icon"><Icon type="area-chart" /></div> r<span className="ehighlight">e</span>porter
               </div>
-          <div className="content">
+          <div className="subtitle">
             <h3>decision support. delivered daily.</h3>
+          </div>
+          <div className="content">
             <ul>
               <li style={{ paddingTop: '20px' }}>
                 Automated Report Generation + Delivery {stackItemActive(1) === 'stack-item' && <BrandSingleArrow color="black" />}
@@ -103,8 +107,10 @@ export default class ImagingStack extends React.Component <{}, ImagingStackState
           <div className="title">
             <div className="icon"><Icon type="eye" /></div> d<span className="ehighlight">e</span>epsight
               </div>
-          <div className="content">
+          <div className="subtitle">
             <h3>beyond analytics.</h3>
+          </div>
+          <div className="content">
             <ul>
               <li style={{ paddingTop: '20px' }}>
                 Cognitive Imaging Analysis for Clinical Professionals {stackItemActive(2) === 'stack-item' && <BrandSingleArrow color="black" />}
@@ -130,8 +136,10 @@ export default class ImagingStack extends React.Component <{}, ImagingStackState
           <div className="title">
             <div className="icon"><Icon type="swap" /></div> flow
               </div>
-          <div className="content">
+          <div className="subtitle">
             <h3>data integration made easy.</h3>
+          </div>
+          <div className="content">
             <ul>
               <li style={{ paddingTop: '20px' }}>
                 End-to-end Data Management {stackItemActive(3) === 'stack-item' && <BrandSingleArrow color="black" />}
@@ -155,8 +163,10 @@ export default class ImagingStack extends React.Component <{}, ImagingStackState
           <div className="title">
             <div className="icon"><Icon type="lock" /></div> vault
               </div>
-          <div className="content">
+          <div className="subtitle">
             <h3>secure. validated. quality-first.</h3>
+          </div>
+          <div className="content">
             <ul>
               <li style={{ paddingTop: '20px' }}>
                 Industry Leading Security + Compliance {stackItemActive(4) === 'stack-item' && <BrandSingleArrow color="black" />}
@@ -180,8 +190,10 @@ export default class ImagingStack extends React.Component <{}, ImagingStackState
           <div className="title">
             <div className="icon"><Icon type="cloud" /></div> fabric
               </div>
-          <div className="content">
+          <div className="subtitle">
             <h3>flexible. scalable. service-driven.</h3>
+          </div>
+          <div className="content">
             <ul>
               <li style={{ paddingTop: '20px' }}>
                 Adaptive Infrastructure {stackItemActive(5) === 'stack-item' && <BrandSingleArrow color="black" />}

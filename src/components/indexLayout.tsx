@@ -25,9 +25,8 @@ export default ({ children, location, splash, mobile }: any) => {
       </Layout>
       <Footer
         style={{
-          position: 'absolute',
-          top: mobile ? '600vh' : 'calc(300vh - 124px)',
-          // bottom: 0,
+          top: mobile ? '600vh' : undefined,
+          position: mobile ? 'absolute' : undefined,
           height: '62px',
           backgroundColor: 'rgb(0, 21, 40)',
           color: 'white',

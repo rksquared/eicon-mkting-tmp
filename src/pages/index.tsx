@@ -77,36 +77,52 @@ const landingSplash = {
   background: `url(${BG})`
 }
 
-export default ({ location }: any) => {
+export default class Main extends React.Component <any, any> {
 
-  return (
-    <Media
-      query="(max-width: 576px)"
-      defaultMatches={false}
-    >
-      {(matches: any) =>
-        matches ?
-          <MobileLayout loc={location} /> :
-          <SplashTemplate location={location} splash={landingSplash} mobile={matches}>
-            <Row>
-              <Solutions location={location} id="solutions"/>
-            </Row>
-            <Row style={{
-              height: '68px', 
-              color: 'white', 
-              textAlign: 'center',
-              fontFamily: 'DINPro-Regular',
-              // paddingLeft: '6vw'
-            }}>
-              <Button type="primary" size="large" href="/demo/" style={brandButtonStyle}>
-                <BrandDoubleArrow color="#F8E71C" /> Request Demo <BrandInvDoubleArrow color="#F8E71C" />
-              </Button>
+  constructor(props: any) {
+    super(props)
+    this.state = {
+      viewMode: 'desktop'
+    }
+  }
 
-            </Row>
-            <Row>
+  componentDidMount() {
+    window.addEventListener('resize', this.onResize.bind(this))
+    this.onResize()
+  }
+
+  onResize = () => {
+    if (window.innerWidth <= 576 && this.state.viewMode !== 'mobile') {
+      this.setState({viewMode: 'mobile'})
+    } else if (window.innerWidth > 576 && this.state.viewMode !== 'desktop') {
+      this.setState({viewMode: 'desktop'})
+    }
+  }
+
+  render() {
+
+    const { location } = this.props;
+
+
+    return this.state.viewMode === 'mobile' ? 
+            <MobileLayout loc={location} /> :(
+            <SplashTemplate location={location} splash={landingSplash} mobile={false}>
+              <Row>
+                <Solutions location={location} id="solutions" />
+              </Row>
+              <Row style={{
+                height: '68px',
+                color: 'white',
+                textAlign: 'center',
+                fontFamily: 'DINPro-Regular',
+                // paddingLeft: '6vw'
+              }}>
+                <Button type="primary" size="large" href="/demo/" style={brandButtonStyle}>
+                  <BrandDoubleArrow color="#F8E71C" /> Request Demo <BrandInvDoubleArrow color="#F8E71C" />
+                </Button>
+
+              </Row>
               <ImagingStack />
-            </Row>
-          </SplashTemplate>
-      }
-    </Media>
-)}
+            </SplashTemplate>)
+  }
+}
