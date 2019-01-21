@@ -23,7 +23,7 @@ const splashContent = (
   >
     <div className="splash-grid-i1" style={{ color: 'white' }}>
       <h1 className="splash-h1">
-        Introducing the
+        Welcome to the
         <br />
         <span style={{ color: brandBrightBlueAccent, textTransform: 'uppercase', fontWeight: 500 }}>Clinical Imaging Cloud</span>
       </h1>
