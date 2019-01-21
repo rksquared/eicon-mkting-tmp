@@ -151,7 +151,7 @@ const generateCardBullets = (datasource: any) => datasource.map(
 
 const Solutions = ({ location, id }: any) => {
   
-  console.log('location is. in analytics.tsx: ', location)
+  // console.log('location is. in analytics.tsx: ', location)
 
   return (
     <LayoutTmplt

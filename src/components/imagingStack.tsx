@@ -17,18 +17,18 @@ export default class ImagingStack extends React.Component <{}, ImagingStackState
   }
 
   startHover = (e: any) => {
-    console.log('starting hover', e.target['id'])
+    // console.log('starting hover', e.target['id'])
     this.setState({isHovering: true, hoverIdx: e.target['id'] })
   }
 
   endHover = (e: any) => {
     this.setState({isHovering: false, hoverIdx: null})
 
-    console.log('ending hover', e.target['id'])
+    // console.log('ending hover', e.target['id'])
   }
 
   setActive = (e: any) => {
-    console.log('setting activeidx', e.target['id'])
+    // console.log('setting activeidx', e.target['id'])
     this.setState({activeIdx: e.target['id']})
   }
 

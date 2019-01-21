@@ -1,7 +1,7 @@
 import { Button, Col, Layout, Modal, Menu, Row, Icon } from 'antd'
 import React from 'react'
 import Helmet from 'react-helmet'
-import { Link, graphql, StaticQuery } from 'gatsby'
+import { Link, navigate, graphql, StaticQuery } from 'gatsby'
 import Scrollchor from 'react-scrollchor'
 import Media from 'react-media'
 
@@ -12,26 +12,42 @@ import { PositionProperty } from 'csstype'
 const { Header } = Layout
 const { SubMenu, ItemGroup, Item } = Menu
 
-const HeaderMenu = ({location, mode}: any) => (
+const HeaderMenu = ({location, mode, closeModal}: any) => (
   <Menu
   theme="dark"
   mode={mode ? "inline" : "horizontal"}
   style={{ fontFamily: 'DINPro-Regular', lineHeight: '62px', fontSize: mode ? '18px' : '24px', fontWeight: mode ? 100 : 300, letterSpacing: '.6px', height: '62px', borderBottom: '0px solid white' }}
   selectedKeys={[location ? location.hash : '']}
 >
-    <Item key="#insights">
-      {/* <Link to="#insights" style={{color: 'inherit'}} onClick={(e) => console.log('e is: ', e)}> */}
-        <Scrollchor to="#insights" animate={{ offset: -90, duration: 400 }} style={{ textDecoration: 'none', color: 'inherit' }}>
+    <Item 
+      key="#insights"
+      onClick={() => {
+        navigate('/#insights')
+        if (mode) {
+          closeModal()
+      }}}
+    >
+        <Scrollchor 
+          to="#insights" 
+          disableHistory={true} 
+          animate={{ offset: -90, duration: 400 }} 
+          style={{ textDecoration: 'none', color: 'inherit' }}
+          role="link"
+        >
           Insights
         </Scrollchor>
-      {/* </Link> */}
     </Item>
-    <Item key="#platform" >
-      {/* <Link to="#platform" style={{color: 'inherit'}}> */}
+    <Item 
+      key="#platform" 
+      onClick={() => {
+        navigate('/#platform')
+        if (mode) {
+          closeModal()
+      }}}
+    >
         <Scrollchor to="#platform" animate={{ offset: -64, duration: 400 }} style={{ textDecoration: 'none', color: 'inherit' }}>
           Platform
         </Scrollchor>
-      {/* </Link> */}
     </Item>
   <Item style={{ height: mode ? '64px' : undefined, top: mode ? undefined : '-10px', }}>
     <Button className="btn-tst" type="primary" ghost={true} size="large" href="/demo/" style={brandButtonStyle}>
@@ -41,7 +57,7 @@ const HeaderMenu = ({location, mode}: any) => (
 </Menu>
 )
 
-export default class MainHeader extends React.Component<{ location: any }> {
+export default class MainHeader extends React.Component<{ location: any }, any> {
   
   state = {
     modal: false
@@ -113,6 +129,11 @@ export default class MainHeader extends React.Component<{ location: any }> {
                             width: matches ? 160 : 260,
                             float: 'left',
                           }}
+                          onClick={() => {
+                            if (this.state.modal) {
+                              this.toggleModal()
+                            }
+                          }}
                         >
                           <img src={Logo as unknown as string} style={{ height: matches ? '32px' : '48px', paddingRight: matches ? '8px' : '16px', marginBottom: '12px' }} />
                           <span style={{ color: '#06A9F4' }}>{data.site.siteMetadata.title[0]}</span>{data.site.siteMetadata.title.slice(1)}
@@ -147,7 +168,7 @@ export default class MainHeader extends React.Component<{ location: any }> {
                     {(matches: any) => 
                       matches ?
                         <Button type="primary" ghost={true} icon={this.state.modal ? 'close' : 'menu'} style={brandButtonStyle} onClick={() => this.toggleModal()}>{this.state.modal ? 'Close' : 'Menu'}</Button> :
-                        <HeaderMenu location={location} mode={matches}/>
+                        <HeaderMenu location={location} mode={matches} closeModal={() => this.toggleModal()}/>
                     }
                     </Media>
                   </Col>
@@ -200,7 +221,7 @@ export default class MainHeader extends React.Component<{ location: any }> {
                     lg={{ span: 10 }}
                   >
                     <Row>
-                      <HeaderMenu location={location} mode={true}/>
+                      <HeaderMenu location={location} mode={true} closeModal={() => this.toggleModal()}/>
                     </Row>
                   </Col>
                 </div>

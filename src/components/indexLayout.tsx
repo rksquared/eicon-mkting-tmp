@@ -10,7 +10,7 @@ const { Footer } = Layout;
 
 export default ({ children, location, splash, mobile }: any) => {
 
-  console.log({ splash });
+  // console.log({ splash });
 
   return (
     <main style={{  background: brandDarkBlue }} id="">

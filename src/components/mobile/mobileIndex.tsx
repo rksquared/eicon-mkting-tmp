@@ -75,12 +75,12 @@ export default class test extends React.Component <any> {
       <SplashTemplate location={props.loc} splash={splash} mobile={true}>
         <ScrollPercentage
           onChange={(percentage: any, inView: any) => {
-            console.log(parseFloat(percentage.toFixed(1)))
+            // console.log(parseFloat(percentage.toFixed(1)))
             this.setState({percentage: parseFloat(percentage.toFixed(1))})
           }}
           className="scroll-container"
         >
-          <div className="m-splash-grid-container sticky">
+          <div className="m-splash-grid-container sticky" id="platform">
             <div className="m-splash-grid-i1">
               <h1 className="splash-h1">Introducing the <br /><span style={{ color: brandBrightBlueAccent, textTransform: 'uppercase', fontWeight: 500 }}>Clinical Imaging Stack</span></h1>
             </div>
@@ -118,7 +118,7 @@ export default class test extends React.Component <any> {
             </div>
           </div>
         </ScrollPercentage>
-        <section className="m-cta-container sticky">
+        <section className="m-cta-container sticky" id="insights">
           <div className="m-splash-grid-container">
             <div className="m-cta-grid-i1">
               <div className="splash-opt-container" id="ops">
