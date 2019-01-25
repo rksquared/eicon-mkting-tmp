@@ -41,6 +41,10 @@ h3 {
   text-align: center;
 }
 
+.splash-grid-form {
+  position: absolute;
+}
+
 @media only screen and (min-device-width: 375px) and (max-device-height: 812px) and (-webkit-device-pixel-ratio: 3) {
   .splash-h1 {
     font-size: 8vw !important;
@@ -250,6 +254,7 @@ h3 {
     font-size: 2.4vh;
     padding-left: 4px;
     line-height: 4.8vh;
+    margin-bottom: 3vh;
   }
   .splash-cta-item#submit {
     font-size: 2.4vh;
