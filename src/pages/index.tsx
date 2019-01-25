@@ -1,5 +1,5 @@
 import React from 'react'
-import { Row, Button, Col, Icon, Input, Form } from 'antd'
+import { Row, Button, Col, Icon, Input, Form, message } from 'antd'
 import Media from 'react-media'
 import * as BG from '../assets/bg3.jpg'
 import SplashTemplate from '../components/indexLayout'
@@ -17,6 +17,12 @@ if (typeof window !== `undefined`) {
   const module = require("intersection-observer")
 }
 
+function encode(data: Object) {
+  return Object.keys(data)
+    .map(key => encodeURIComponent(key) + "=" + encodeURIComponent(data[key]))
+    .join("&");
+}
+
 class CTAform extends React.Component<any, any> {
   state = {
     opsbtn: false,
@@ -29,6 +35,24 @@ class CTAform extends React.Component<any, any> {
     this.props.form.validateFields((err: any, values: any) => {
       if (!err) {
         console.log('Received values of form: ', values)
+        const form = e.target;
+        fetch("/", {
+          method: "POST",
+          headers: { "Content-Type": "application/x-www-form-urlencoded" },
+          body: encode({
+            "form-name": form.getAttribute("name"),
+            ...this.state,
+            ...values
+          })
+        })
+          .then(() => {
+            // navigateTo(form.getAttribute("action"))
+            message.success(`Thanks for the information. We'll be in touch.`);
+          })
+          .catch(error => {
+            alert(error)
+            message.error('Please try again with a valid email address. Thanks!')
+          });
       }
     });
   }
