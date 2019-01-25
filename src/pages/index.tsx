@@ -45,7 +45,7 @@ class CTAform extends React.Component<any, any> {
 
     return (
       <Form className="splash-grid-container splash-grid-form" onSubmit={(e: any) => this.handleSubmit(e)} name="contact" method="POST" data-netlify="true">
-
+        <input type="hidden" name="form-name" value="contact" />
         <div className="splash-grid-i2">
           <div className="splash-opt-container" id="ops">
             <Button type="primary" value={''+this.state.opsbtn} shape="circle" id="opsbtn" ghost={!this.state.opsbtn} size="large" className="splash-options" onClick={this.handleCTAOption}>
