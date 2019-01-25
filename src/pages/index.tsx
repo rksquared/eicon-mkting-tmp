@@ -1,6 +1,5 @@
 import React from 'react'
-import { Row, Button, Col, Icon, Input, Form, message } from 'antd'
-import Media from 'react-media'
+import { Row, Button, Icon, Input, Form, notification } from 'antd'
 import * as BG from '../assets/bg3.jpg'
 import SplashTemplate from '../components/indexLayout'
 import MobileLayout from '../components/mobile/mobileIndex'
@@ -16,6 +15,8 @@ import './index.css'
 if (typeof window !== `undefined`) {
   const module = require("intersection-observer")
 }
+
+notification.config({placement: 'topRight', top: 72, duration: 3})
 
 function encode(data: Object) {
   return Object.keys(data)
@@ -35,11 +36,7 @@ class CTAform extends React.Component<any, any> {
     this.props.form.validateFields((err: any, values: any) => {
       if (!err) {
         const form = e.target;
-        console.log('Received values of form: ', encode({
-          "form-name": form.getAttribute("name"),
-          ...this.state,
-          ...values
-        }))
+
         fetch("/", {
           method: "POST",
           headers: { "Content-Type": "application/x-www-form-urlencoded" },
@@ -50,12 +47,15 @@ class CTAform extends React.Component<any, any> {
           })
         })
           .then(() => {
-            // navigateTo(form.getAttribute("action"))
-            message.success(`Thanks for the information. We'll be in touch.`);
+            notification.success({
+              description: `We'll be in touch shortly.`, 
+              message: `Thank you for Requesting a Demo!`, 
+            })
+            this.props.form.resetFields()
+            this.setState({bizbtn: false, scibtn: false, opsbtn: false})
           })
           .catch(error => {
             alert(error)
-            message.error('Please try again with a valid email address. Thanks!')
           });
       }
     });
