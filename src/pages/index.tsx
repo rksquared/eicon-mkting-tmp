@@ -21,7 +21,7 @@ notification.config({placement: 'topRight', top: 72, duration: 3})
 function encode(data: Object) {
   return Object.keys(data)
     .map(key => encodeURIComponent(key) + "=" + encodeURIComponent(typeof data[key] === 'boolean' ? '' + data[key] : data[key]))
-    .join("&");
+    .join("&")
 }
 
 class CTAform extends React.Component<any, any> {
@@ -36,7 +36,7 @@ class CTAform extends React.Component<any, any> {
     this.props.form.validateFields((err: any, values: any) => {
       if (!err) {
         const form = e.target;
-
+        
         fetch("/", {
           method: "POST",
           headers: { "Content-Type": "application/x-www-form-urlencoded" },
@@ -70,8 +70,6 @@ class CTAform extends React.Component<any, any> {
   render() {
 
     const { getFieldDecorator, getFieldError, isFieldTouched } = this.props.form
-
-    console.log('ghost or naw?', !(!getFieldError('email') && isFieldTouched('email')))
 
     return (
       <Form className="splash-grid-container splash-grid-form" onSubmit={(e: any) => this.handleSubmit(e)} name="contact" method="POST" data-netlify="true">
