@@ -34,8 +34,12 @@ class CTAform extends React.Component<any, any> {
     e.preventDefault()
     this.props.form.validateFields((err: any, values: any) => {
       if (!err) {
-        console.log('Received values of form: ', values)
         const form = e.target;
+        console.log('Received values of form: ', encode({
+          "form-name": form.getAttribute("name"),
+          ...this.state,
+          ...values
+        }))
         fetch("/", {
           method: "POST",
           headers: { "Content-Type": "application/x-www-form-urlencoded" },
@@ -72,7 +76,7 @@ class CTAform extends React.Component<any, any> {
         <input type="hidden" name="form-name" value="contact" />
         <div className="splash-grid-i2">
           <div className="splash-opt-container" id="ops">
-            <Button type="primary" value={''+this.state.opsbtn} shape="circle" id="opsbtn" ghost={!this.state.opsbtn} size="large" className="splash-options" onClick={this.handleCTAOption}>
+            <Button type="primary" value={''+this.state.opsbtn} shape="circle" id="opsbtn" name="opsbtn" ghost={!this.state.opsbtn} size="large" className="splash-options" onClick={this.handleCTAOption}>
               <Icon component={({ height }) => <Ops height={height} />} />
             </Button>
             <div className="splash-opt-text">
@@ -80,7 +84,7 @@ class CTAform extends React.Component<any, any> {
             </div>
           </div>
           <div className="splash-opt-container" id="sci">
-            <Button type="primary" value={''+this.state.scibtn} shape="circle" id="scibtn" ghost={!this.state.scibtn} size="large" className="splash-options" onClick={this.handleCTAOption}>
+            <Button type="primary" value={''+this.state.scibtn} shape="circle" id="scibtn" name="scibtn" ghost={!this.state.scibtn} size="large" className="splash-options" onClick={this.handleCTAOption}>
               <Icon component={({ height }) => <Clinicians height={height} />} />
             </Button>
             <div className="splash-opt-text">
@@ -88,7 +92,7 @@ class CTAform extends React.Component<any, any> {
             </div>
           </div>
           <div className="splash-opt-container" id="biz">
-            <Button value={''+this.state.bizbtn} className="splash-options" id="bizbtn" type="primary" shape="circle" ghost={!this.state.bizbtn} size="large" onClick={this.handleCTAOption}>
+            <Button value={''+this.state.bizbtn} className="splash-options" id="bizbtn" name="bizbtn" type="primary" shape="circle" ghost={!this.state.bizbtn} size="large" onClick={this.handleCTAOption}>
               <Icon component={({ height, width }) => <BizLeaders height={height} width={width} />} />
             </Button>
             <div className="splash-opt-text">
@@ -102,7 +106,7 @@ class CTAform extends React.Component<any, any> {
           {getFieldDecorator('email', {
             rules: [{ required: true, type: 'email', message: 'Please input your email!' }],
           })(
-            <Input size="large" className="splash-cta-item" id="email" placeholder="name@company.com" style={{marginBottom: '8vh'}}/>
+            <Input size="large" name="email" className="splash-cta-item" id="email" placeholder="name@company.com" style={{marginBottom: '8vh'}}/>
           )}
           </Form.Item>
           <Form.Item className="splash-cta-container">
