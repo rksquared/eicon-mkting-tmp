@@ -333,11 +333,11 @@ h3 {
 }
 
 .splash-cta-item {
-  background: none !important;
   border-style: solid;
 }
 
 .splash-cta-item#email {
+  background: none !important;
   border-color: #DCF3FD;
   font-family: 'FiraCode-Retina' !important;
 }

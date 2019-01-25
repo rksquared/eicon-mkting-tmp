@@ -27,7 +27,7 @@ class CTAform extends React.Component<any, any> {
   state = {
     opsbtn: false,
     scibtn: false,
-    bizbtn: false
+    bizbtn: false,
   }
 
   handleSubmit = (e: any) => {
@@ -69,14 +69,19 @@ class CTAform extends React.Component<any, any> {
 
   render() {
 
-    const { getFieldDecorator } = this.props.form
+    const { getFieldDecorator, getFieldError, isFieldTouched } = this.props.form
+
+    console.log('ghost or naw?', !(!getFieldError('email') && isFieldTouched('email')))
 
     return (
       <Form className="splash-grid-container splash-grid-form" onSubmit={(e: any) => this.handleSubmit(e)} name="contact" method="POST" data-netlify="true">
         <input type="hidden" name="form-name" value="contact" />
+        <input type="hidden" name="opsbtn" />
+        <input type="hidden" name="bizbtn" />
+        <input type="hidden" name="scibtn" />
         <div className="splash-grid-i2">
           <div className="splash-opt-container" id="ops">
-            <Button type="primary" value={''+this.state.opsbtn} shape="circle" id="opsbtn" name="opsbtn" ghost={!this.state.opsbtn} size="large" className="splash-options" onClick={this.handleCTAOption}>
+            <Button type="primary" value={''+this.state.opsbtn} shape="circle" id="opsbtn" ghost={!this.state.opsbtn} size="large" className="splash-options" onClick={this.handleCTAOption}>
               <Icon component={({ height }) => <Ops height={height} />} />
             </Button>
             <div className="splash-opt-text">
@@ -84,7 +89,7 @@ class CTAform extends React.Component<any, any> {
             </div>
           </div>
           <div className="splash-opt-container" id="sci">
-            <Button type="primary" value={''+this.state.scibtn} shape="circle" id="scibtn" name="scibtn" ghost={!this.state.scibtn} size="large" className="splash-options" onClick={this.handleCTAOption}>
+            <Button type="primary" value={''+this.state.scibtn} shape="circle" id="scibtn" ghost={!this.state.scibtn} size="large" className="splash-options" onClick={this.handleCTAOption}>
               <Icon component={({ height }) => <Clinicians height={height} />} />
             </Button>
             <div className="splash-opt-text">
@@ -92,7 +97,7 @@ class CTAform extends React.Component<any, any> {
             </div>
           </div>
           <div className="splash-opt-container" id="biz">
-            <Button value={''+this.state.bizbtn} className="splash-options" id="bizbtn" name="bizbtn" type="primary" shape="circle" ghost={!this.state.bizbtn} size="large" onClick={this.handleCTAOption}>
+            <Button value={''+this.state.bizbtn} className="splash-options" id="bizbtn" type="primary" shape="circle" ghost={!this.state.bizbtn} size="large" onClick={this.handleCTAOption}>
               <Icon component={({ height, width }) => <BizLeaders height={height} width={width} />} />
             </Button>
             <div className="splash-opt-text">
@@ -110,7 +115,7 @@ class CTAform extends React.Component<any, any> {
           )}
           </Form.Item>
           <Form.Item className="splash-cta-container">
-            <Button htmlType="submit" className="splash-cta-item" id="submit" type="primary" ghost={true} size="large">
+            <Button htmlType="submit" className="splash-cta-item" id="submit" type="primary" ghost={!(!getFieldError('email') && isFieldTouched('email'))} size="large">
               <BrandDoubleArrow color="#F8E71C" /><span style={{ paddingRight: '8px', paddingLeft: '8px' }}>Request Demo</span><BrandInvDoubleArrow color="#F8E71C" />
             </Button>
           </Form.Item>
