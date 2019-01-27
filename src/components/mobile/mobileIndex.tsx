@@ -16,15 +16,15 @@ const splash = {
   content: (
     <div className="m-splash-grid-container">
       <div className="m-splash-grid-i--1">
-        <a className="splash-h2 splash-subtitle-link">Real-time Decision Support.</a>
+        <a className="m-splash-h2 splash-subtitle-link">Real-time Decision Support.</a>
       </div>
       <div className="m-splash-grid-i1_2">
-        <a className="splash-h2 splash-subtitle-link">
+        <a className="m-splash-h2 splash-subtitle-link">
           Operational Excellence.
         </a>
       </div>
       <div className="m-splash-grid-i2_3">
-        <a className="splash-h2 splash-subtitle-link">
+        <a className="m-splash-h2 splash-subtitle-link">
           Clinical Insights.
         </a>
       </div>
@@ -82,7 +82,7 @@ export default class test extends React.Component <any> {
         >
           <div className="m-splash-grid-container sticky" id="platform">
             <div className="m-splash-grid-i1">
-              <h1 className="splash-h1">Introducing the <br /><span style={{ color: brandBrightBlueAccent, textTransform: 'uppercase', fontWeight: 500 }}>Clinical Imaging Stack</span></h1>
+              <h1 className="m-splash-h1">Introducing the <br /><span style={{ color: brandBrightBlueAccent, textTransform: 'uppercase', fontWeight: 500 }}>Clinical Imaging Stack</span></h1>
             </div>
             <div className="m-splash-grid-i-fig">
               <ProductGraphic viewPercent={this.state.percentage}/>
@@ -118,30 +118,30 @@ export default class test extends React.Component <any> {
             </div>
           </div>
         </ScrollPercentage>
-        <section className="m-cta-container sticky" id="insights">
+        <section className="m-cta-container" id="insights">
           <div className="m-splash-grid-container">
             <div className="m-cta-grid-i1">
-              <div className="splash-opt-container" id="ops">
-                <Button type="primary" shape="circle" ghost={true} size="large" className="splash-options">
+              <div className="m-splash-opt-container" id="ops">
+                <Button className="m-splash-options" type="primary" shape="circle" ghost={true} size="large">
                   <Icon component={({ height }) => <Ops height={height} />} style={{fontSize: '10vw'}}/>
                 </Button>
-                <div className="splash-opt-text">
+                <div className="m-splash-opt-text">
                   Data Operations + <br />Management
               </div>
               </div>
-              <div className="splash-opt-container" id="sci">
-                <Button type="primary" shape="circle" ghost={true} size="large" className="splash-options">
+              <div className="m-splash-opt-container" id="sci">
+                <Button className="m-splash-options" type="primary" shape="circle" ghost={true} size="large">
                   <Icon component={({ height }) => <Clinicians height={height} />} style={{fontSize: '10vw'}}/>
                 </Button>
-                <div className="splash-opt-text">
+                <div className="m-splash-opt-text">
                   Clinicians + <br />Scientists
               </div>
               </div>
-              <div className="splash-opt-container" id="biz">
-                <Button className="splash-options" type="primary" shape="circle" ghost={true} size="large" >
+              <div className="m-splash-opt-container" id="biz">
+                <Button className="m-splash-options" type="primary" shape="circle" ghost={true} size="large" >
                   <Icon component={({ height, width }) => <BizLeaders height={height} width={width} />} style={{fontSize: '10vw'}}/>
                 </Button>
-                <div className="splash-opt-text">
+                <div className="m-splash-opt-text">
                   Business <br />Leadership
                 </div>
               </div>
@@ -159,11 +159,11 @@ export default class test extends React.Component <any> {
             </div>
 
             <div className="m-cta-input-container">
-              <div className="splash-cta-container">
-                <Input size="large" className="splash-cta-item" id="email" placeholder="name@company.com" />
+              <div className="m-splash-cta-container">
+                <Input size="large" className="m-splash-cta-item" id="email" placeholder="name@company.com" />
               </div>
-              <div className="splash-cta-container">
-                <Button className="splash-cta-item" id="submit" type="primary" ghost={true} size="large" href="/demo/">
+              <div className="m-splash-cta-container">
+                <Button className="m-splash-cta-item" id="submit" type="primary" ghost={true} size="large" href="/demo/">
                   <BrandDoubleArrow color="#F8E71C" /><span style={{ paddingRight: '8px', paddingLeft: '8px' }}>Request Demo</span><BrandInvDoubleArrow color="#F8E71C" />
                 </Button>
               </div>
