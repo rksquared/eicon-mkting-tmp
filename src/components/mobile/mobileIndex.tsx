@@ -9,7 +9,8 @@ import { brandBrightBlueAccent, brandDarkBlue, BrandDoubleArrow, BrandInvDoubleA
 import * as BG from '../../assets/bg3.jpg'
 import './mobile-index.css'
 import '../../assets/assets.css'
-import { Button, Icon, Input } from 'antd';
+import { Button, Icon, Input, Form, notification } from 'antd';
+import { encode } from '../../utils/serialize';
 
 
 const splash = {
@@ -63,19 +64,61 @@ const splash = {
   background: `url(${BG})`
 }
 
-export default class test extends React.Component <any> {
+
+
+class MobileCTAForm extends React.Component <any, any> {
   state = {
-    percentage: 0
+    percentage: 0,
+    opsbtn: false,
+    scibtn: false,
+    bizbtn: false,
+  }
+
+  handleSubmit = (e: any) => {
+    e.preventDefault()
+    this.props.form.validateFields((err: any, values: any) => {
+      if (!err) {
+        const form = e.target;
+        
+        fetch("/", {
+          method: "POST",
+          headers: { "Content-Type": "application/x-www-form-urlencoded" },
+          body: encode({
+            "form-name": form.getAttribute("name"),
+            ...this.state,
+            ...values
+          })
+        })
+          .then(() => {
+            notification.success({
+              description: `We'll be in touch shortly.`, 
+              message: `Thank you for Requesting a Demo!`, 
+            })
+            this.props.form.resetFields()
+            this.setState({bizbtn: false, scibtn: false, opsbtn: false})
+          })
+          .catch(error => {
+            alert(error)
+          });
+      }
+    });
+  }
+
+  handleCTAOption = (e: any) => {
+    const shallowState = {...this.state}
+    shallowState[e.target.id] = !shallowState[e.target.id] 
+    this.setState(shallowState)
   }
 
   render() {
     const props = this.props
 
+    const { getFieldDecorator, getFieldError, isFieldTouched } = this.props.form
+
     return (
       <SplashTemplate location={props.loc} splash={splash} mobile={true}>
         <ScrollPercentage
           onChange={(percentage: any, inView: any) => {
-            // console.log(parseFloat(percentage.toFixed(1)))
             this.setState({percentage: parseFloat(percentage.toFixed(1))})
           }}
           className="scroll-container"
@@ -119,10 +162,14 @@ export default class test extends React.Component <any> {
           </div>
         </ScrollPercentage>
         <section className="m-cta-container" id="insights">
-          <div className="m-splash-grid-container">
+          <Form className="m-splash-grid-container splash" onSubmit={(e: any) => this.handleSubmit(e)} name="contact" method="POST" data-netlify="true">
+            <input type="hidden" name="form-name" value="contact" />
+            <input type="hidden" name="opsbtn" />
+            <input type="hidden" name="bizbtn" />
+            <input type="hidden" name="scibtn" />
             <div className="m-cta-grid-i1">
               <div className="m-splash-opt-container" id="ops">
-                <Button className="m-splash-options" type="primary" shape="circle" ghost={true} size="large">
+                <Button className="m-splash-options" value={''+this.state.opsbtn} id="opsbtn" ghost={!this.state.opsbtn} onClick={this.handleCTAOption} type="primary" shape="circle" size="large">
                   <Icon component={({ height }) => <Ops height={height} />} style={{fontSize: '10vw'}}/>
                 </Button>
                 <div className="m-splash-opt-text">
@@ -130,7 +177,7 @@ export default class test extends React.Component <any> {
               </div>
               </div>
               <div className="m-splash-opt-container" id="sci">
-                <Button className="m-splash-options" type="primary" shape="circle" ghost={true} size="large">
+                <Button className="m-splash-options" type="primary" shape="circle" value={''+this.state.scibtn} id="scibtn" ghost={!this.state.scibtn} onClick={this.handleCTAOption} size="large">
                   <Icon component={({ height }) => <Clinicians height={height} />} style={{fontSize: '10vw'}}/>
                 </Button>
                 <div className="m-splash-opt-text">
@@ -138,7 +185,7 @@ export default class test extends React.Component <any> {
               </div>
               </div>
               <div className="m-splash-opt-container" id="biz">
-                <Button className="m-splash-options" type="primary" shape="circle" ghost={true} size="large" >
+                <Button className="m-splash-options" type="primary" shape="circle" value={''+this.state.bizbtn} id="bizbtn" ghost={!this.state.bizbtn} onClick={this.handleCTAOption} size="large" >
                   <Icon component={({ height, width }) => <BizLeaders height={height} width={width} />} style={{fontSize: '10vw'}}/>
                 </Button>
                 <div className="m-splash-opt-text">
@@ -152,25 +199,31 @@ export default class test extends React.Component <any> {
                 <div className="m-cta-btn-text">
                   Tell us <br /> who you are
                 </div>
-                <div className="m-cta-plus-btn">
+                {/* <div className="m-cta-plus-btn">
                   <Button shape="circle" ghost={true} icon="plus" type="primary" size="small" style={{borderColor: '#9ADFFA', color: '#F8E71C'}}/>
-                </div>
+                </div> */}
               </div>
             </div>
 
             <div className="m-cta-input-container">
-              <div className="m-splash-cta-container">
-                <Input size="large" className="m-splash-cta-item" id="email" placeholder="name@company.com" />
-              </div>
-              <div className="m-splash-cta-container">
-                <Button className="m-splash-cta-item" id="submit" type="primary" ghost={true} size="large" href="/demo/">
+              <Form.Item className="m-splash-cta-container">
+                {getFieldDecorator('email', {
+                  rules: [{ required: true, type: 'email', message: 'Please input your email!' }],
+                })(
+                  <Input size="large" className="m-splash-cta-item" id="email" placeholder="name@company.com" />
+                )}
+              </Form.Item>
+              <Form.Item className="m-splash-cta-container">
+                <Button htmlType="submit" className="m-splash-cta-item" id="submit" type="primary" ghost={!(!getFieldError('email') && isFieldTouched('email'))} size="large">
                   <BrandDoubleArrow color="#F8E71C" /><span style={{ paddingRight: '8px', paddingLeft: '8px' }}>Request Demo</span><BrandInvDoubleArrow color="#F8E71C" />
                 </Button>
-              </div>
+              </Form.Item>
             </div>
-          </div>
+          </Form>
         </section>
       </SplashTemplate>
     )
   }
 }
+
+export default Form.create()(MobileCTAForm)

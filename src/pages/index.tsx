@@ -9,6 +9,9 @@ import Ops from '../assets/splash-content/ops'
 import { brandBrightBlueAccent, brandButtonStyle, BrandDoubleArrow, BrandInvDoubleArrow } from '../assets/brandAssets'
 import ImagingStack from '../components/imagingStack'
 import Solutions from './analytics'
+
+import { encode } from '../utils/serialize'
+
 import '../assets/assets.css'
 import './index.css'
 
@@ -17,12 +20,6 @@ if (typeof window !== `undefined`) {
 }
 
 notification.config({placement: 'topRight', top: 72, duration: 3})
-
-function encode(data: Object) {
-  return Object.keys(data)
-    .map(key => encodeURIComponent(key) + "=" + encodeURIComponent(typeof data[key] === 'boolean' ? '' + data[key] : data[key]))
-    .join("&")
-}
 
 class CTAform extends React.Component<any, any> {
   state = {

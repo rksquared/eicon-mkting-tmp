@@ -65,6 +65,7 @@
   font-size: 16px !important;
   padding-left: 4px !important;
   line-height: 28px !important;
+  margin-bottom: 6vh;
 }
 .m-splash-cta-item#submit {
   font-size: 16px !important;
@@ -304,7 +305,7 @@
   font-family: 'DINPro-Regular';
   font-size: 12vw;
   grid-row: 2 / 5;
-  grid-column: 1;
+  grid-column: 1 / 3;
   margin-left: 4%;
 }
 
