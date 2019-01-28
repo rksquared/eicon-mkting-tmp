@@ -59,7 +59,8 @@ export const BrandSplashContainer = ({ content, bg }: any) => {
     backgroundRepeat: 'no-repeat',
     backgroundSize: 'cover',
     margin: 0,
-    display: 'block'
+    display: 'block',
+    top: 64,
   }
   
   return (

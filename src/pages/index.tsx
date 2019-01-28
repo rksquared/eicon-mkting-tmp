@@ -1,5 +1,6 @@
 import React from 'react'
 import { Row, Button, Icon, Input, Form, notification } from 'antd'
+import Scrollchor from 'react-scrollchor'
 import * as BG from '../assets/bg3.jpg'
 import SplashTemplate from '../components/indexLayout'
 import MobileLayout from '../components/mobile/mobileIndex'
@@ -14,6 +15,7 @@ import { encode } from '../utils/serialize'
 
 import '../assets/assets.css'
 import './index.css'
+import { navigate } from '@reach/router';
 
 if (typeof window !== `undefined`) {
   const module = require("intersection-observer")
@@ -106,7 +108,7 @@ class CTAform extends React.Component<any, any> {
           {getFieldDecorator('email', {
             rules: [{ required: true, type: 'email', message: 'Please input your email!' }],
           })(
-            <Input size="large" name="email" className="splash-cta-item" id="email" placeholder="name@company.com" style={{marginBottom: '8vh'}}/>
+            <Input size="large" name="email" className="splash-cta-item" id="email" placeholder="name@company.com"/>
           )}
           </Form.Item>
           <Form.Item className="splash-cta-container">
@@ -186,10 +188,18 @@ export default class Main extends React.Component <any, any> {
                 fontFamily: 'DINPro-Regular',
                 // paddingLeft: '6vw'
               }}>
-                <Button type="primary" size="large" href="/demo/" style={brandButtonStyle}>
-                  <BrandDoubleArrow color="#F8E71C" /> Request Demo <BrandInvDoubleArrow color="#F8E71C" />
-                </Button>
-
+                <Scrollchor
+                  to={''}
+                  disableHistory={true}
+                  animate={{ offset: -90, duration: 400 }}
+                  style={{ textDecoration: 'none', color: 'inherit' }}
+                  role="link"
+                  onClick={() => navigate('')}
+                >
+                  <Button className="btn-tst" type="primary" size="large" style={brandButtonStyle}>
+                    <BrandDoubleArrow color="#F8E71C" /> Request Demo <BrandInvDoubleArrow color="#F8E71C" />
+                  </Button>
+                </Scrollchor>
               </Row>
               <ImagingStack />
             </SplashTemplate>)

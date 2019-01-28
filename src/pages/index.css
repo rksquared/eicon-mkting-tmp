@@ -22,6 +22,10 @@ h3 {
   line-height: 1.5;
 }
 
+.ant-form-explain {
+  margin-top: 6.4vh;
+}
+
 .splash-h1 {
   color: white;
   font-weight: 100;
@@ -254,7 +258,6 @@ h3 {
     font-size: 2.4vh;
     padding-left: 4px;
     line-height: 4.8vh;
-    margin-bottom: 3vh;
   }
   .splash-cta-item#submit {
     font-size: 2.4vh;

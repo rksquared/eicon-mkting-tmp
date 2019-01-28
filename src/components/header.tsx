@@ -1,4 +1,4 @@
-import { Button, Col, Layout, Modal, Menu, Row, Icon } from 'antd'
+import { Button, Col, Layout, Modal, Menu, Row } from 'antd'
 import React from 'react'
 import Helmet from 'react-helmet'
 import { Link, navigate, graphql, StaticQuery } from 'gatsby'
@@ -10,9 +10,9 @@ import { BrandDoubleArrow, BrandInvDoubleArrow, brandButtonStyle, brandDarkBlue 
 import { PositionProperty } from 'csstype'
 
 const { Header } = Layout
-const { SubMenu, ItemGroup, Item } = Menu
+const { Item } = Menu
 
-const HeaderMenu = ({location, mode, closeModal}: any) => (
+const HeaderMenu = ({location, mode, closeModal, renderCTA, mobile}: any) => (
   <Menu
   theme="dark"
   mode={mode ? "inline" : "horizontal"}
@@ -49,15 +49,33 @@ const HeaderMenu = ({location, mode, closeModal}: any) => (
           Platform
         </Scrollchor>
     </Item>
-  <Item style={{ height: mode ? '64px' : undefined, top: mode ? undefined : '-10px', }}>
-    <Button className="btn-tst" type="primary" ghost={true} size="large" href="/demo/" style={brandButtonStyle}>
-      <BrandDoubleArrow color="#F8E71C" /> Request Demo <BrandInvDoubleArrow color="#F8E71C" />
-    </Button>
-  </Item>
+  { (renderCTA || mode) &&
+      <Item
+        style={{ height: mode ? '64px' : undefined, top: mode ? undefined : '-2px', }}
+        onClick={() => {
+          navigate(mobile ? '#insights' : '')
+          if (mode) {
+            closeModal()
+          }
+        }}
+      >
+        <Scrollchor
+          to={mobile ? '#insights' : ''}
+          disableHistory={true}
+          animate={{ offset: -90, duration: 400 }}
+          style={{ textDecoration: 'none', color: 'inherit' }}
+          role="link"
+        >
+          <Button className="btn-tst" type="primary" ghost={ mode } size="large" href="/demo/" style={brandButtonStyle}>
+            <BrandDoubleArrow color="#F8E71C" /> Request Demo <BrandInvDoubleArrow color="#F8E71C" />
+          </Button>
+        </Scrollchor>
+      </Item>
+  }
 </Menu>
 )
 
-export default class MainHeader extends React.Component<{ location: any }, any> {
+export default class MainHeader extends React.Component<{ location: any, renderCTA: boolean, mobile: boolean }, any> {
   
   state = {
     modal: false
@@ -70,7 +88,7 @@ export default class MainHeader extends React.Component<{ location: any }, any> 
   }
   
   render() {
-    const { location } = this.props
+    const { location, renderCTA, mobile } = this.props
 
     return (
       <StaticQuery
@@ -156,10 +174,10 @@ export default class MainHeader extends React.Component<{ location: any }, any> 
                       offset: 22,
                     }}
                     xl={{
-                      offset: 12,
+                      offset: renderCTA ? 13 : 17,
                     }}
                     xxl={{
-                      offset: 15,
+                      offset: renderCTA ? 15 : 18,
                     }}
                   >
                     <Media
@@ -168,7 +186,7 @@ export default class MainHeader extends React.Component<{ location: any }, any> 
                     {(matches: any) => 
                       matches ?
                         <Button type="primary" ghost={true} icon={this.state.modal ? 'close' : 'menu'} style={brandButtonStyle} onClick={() => this.toggleModal()}>{this.state.modal ? 'Close' : 'Menu'}</Button> :
-                        <HeaderMenu location={location} mode={matches} closeModal={() => this.toggleModal()}/>
+                        <HeaderMenu location={location} mode={matches} closeModal={() => this.toggleModal()} renderCTA={renderCTA}/>
                     }
                     </Media>
                   </Col>
@@ -221,7 +239,7 @@ export default class MainHeader extends React.Component<{ location: any }, any> 
                     lg={{ span: 10 }}
                   >
                     <Row>
-                      <HeaderMenu location={location} mode={true} closeModal={() => this.toggleModal()}/>
+                      <HeaderMenu location={location} mode={true} mobile={mobile} closeModal={() => this.toggleModal()}/>
                     </Row>
                   </Col>
                 </div>

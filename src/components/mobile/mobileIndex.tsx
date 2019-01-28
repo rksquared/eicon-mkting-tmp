@@ -11,6 +11,7 @@ import './mobile-index.css'
 import '../../assets/assets.css'
 import { Button, Icon, Input, Form, notification } from 'antd';
 import { encode } from '../../utils/serialize';
+import { navigate } from 'gatsby';
 
 
 const splash = {
@@ -32,7 +33,10 @@ const splash = {
       <div className="m-splash-grid-i3_4">
         Put your data <br /> <span className="emphasis">to work.</span>
       </div>
-      <div className="m-splash-grid-i4_5">
+      <div 
+        className="m-splash-grid-i4_5"
+        onClick={() => navigate('#platform')}
+      >
         <svg
           width="30px"
           viewBox="0 0 30 117"
@@ -130,8 +134,17 @@ class MobileCTAForm extends React.Component <any, any> {
             <div className="m-splash-grid-i-fig">
               <ProductGraphic viewPercent={this.state.percentage}/>
             </div>
-            <div className="m-splash-grid-i4_5">
-
+            <div className="m-splash-grid-i4_5"
+              onClick={() => {
+                if (this.state.percentage < .3) {
+                  this.setState({percentage: .3})
+                } else if (this.state.percentage < .8) {
+                  this.setState({percentage: parseFloat((this.state.percentage + .1).toFixed(1))})
+                } else {
+                  navigate('#insights')
+                }  
+              }}
+            >
               <svg
                 width="30px"
                 viewBox="0 0 30 117"
