@@ -7,6 +7,12 @@ module.exports = {
     'gatsby-plugin-antd',
     'gatsby-plugin-typescript',
     {
+      resolve: `gatsby-plugin-google-analytics`,
+      options: {
+        trackingId: "UA-133877666-1",
+      }
+    },
+    {
       resolve: `gatsby-source-filesystem`,
       options: {
         name: `images`,
